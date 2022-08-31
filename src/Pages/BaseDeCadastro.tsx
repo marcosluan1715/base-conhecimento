@@ -19,10 +19,11 @@ export  const BaseCadastro = () => {
          e.target.style.display = 'block'
     }
 
-    const handleTexto = (e:ChangeEvent<HTMLTextAreaElement>) =>  {
+    const handleTexto = () =>  {
         console.log("Clicado!")
-        setText (e.target.value)
-        e.target.style.display = "block"
+        let textarea = document.getElementById('textarea') as HTMLInputElement
+        // setText (e.target.value)
+        textarea.style.display = "block"
     }
 
   
