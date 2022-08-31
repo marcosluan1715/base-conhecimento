@@ -39,9 +39,9 @@ export  const BaseCadastro = () => {
         <div>
             <Voltar/>
 
-            <div className='pai ' style={{display:' flex', height:'100hv', width:'100wv',border:'1px solid #000000'}}>
+            <div className='display-flex ' style={{display:' flex', height:'100hv', width:'100wv',border:'1px solid #000000'}}>
 
-                <div className='lateral-botoes' style={{border:'1px solid #000000', width:'15%', height:'400px'}}>
+                <div className='lateral-botoes' style={{margin:'10px',border:'1px solid #000000', width:'15%', height:'400px'}}>
                     <Titulo name='titulo' />
                     <Texto handleTexto={handleTexto} />
                     <Imagem handleImagem={handleImagem}/>
@@ -60,7 +60,7 @@ export  const BaseCadastro = () => {
                 >
                     
                     <input 
-                        style={{ display: 'none', width: '400px', border: '1px solid #000000' }} 
+                        // style={{ display: 'none', width: '400px', border: '1px solid #000000' }} 
                         id="input" 
                         onChange={handleTitulo} 
                         value={titulo} 
