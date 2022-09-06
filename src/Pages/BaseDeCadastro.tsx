@@ -12,25 +12,21 @@ export  const BaseCadastro = () => {
     const [ titulo, setTitulo ] = useState("")
     const [ text, setText ] = useState("")
     const [ img, setimg ] = useState("") 
+    const[displayTitulo, setDisplayTitulo] = useState('hidden');
+    const[displayText, setDisplayText] = useState('hidden');
+    const[displayImg, setDisplayImg] = useState('hidden');
 
-    const handleTitulo = (e:ChangeEvent<HTMLInputElement>) => {
-        console.log("Clicado!")
-         setTitulo (e.target.value)
-         e.target.style.display = 'block'
+    const handleTitulo = () => {
+        setDisplayTitulo('block')
     }
 
     const handleTexto = () =>  {
-        console.log("Clicado!")
-        let textarea = document.getElementById('textarea') as HTMLInputElement
-        // setText (e.target.value)
-        textarea.style.display = "block"
+        setDisplayText('block')
     }
 
   
     const handleImagem = () => {
-        console.log("Clicado!")
-        let img = document.getElementById('img') as HTMLInputElement
-        img.style.display = "block"
+        setDisplayImg('block')
     }
 
     return(
@@ -38,37 +34,39 @@ export  const BaseCadastro = () => {
         
         <div>
             <Voltar/>
+            {/* className='display-flex ' style={{display:' flex', justifyContent: 'space-between', height:'100hv', width:'100wv',border:'1px solid #000000'}} */}
+            {/* style={{margin:'10px',border:'1px solid #000000',  height:'400px'}} */}
 
-            <div className='display-flex ' style={{display:' flex', height:'100hv', width:'100wv',border:'1px solid #000000'}}>
+            <div>
 
-                <div className='lateral-botoes' style={{margin:'10px',border:'1px solid #000000', width:'15%', height:'400px'}}>
-                    <Titulo name='titulo' />
+                <div className='lateral-botoes text-left flex' >
+                    <Titulo name='Titulo' handleTitulo={handleTitulo} />
                     <Texto handleTexto={handleTexto} />
                     <Imagem handleImagem={handleImagem}/>
                 </div>
 
-                <div 
-                    className='conteudo-form' 
+                <div className=''
+                    
                     style={{
                         display: 'flex',
                         flexDirection: 'column',
-                        justifyContent: 'center',
                         alignContent: 'center',
-                        border:'1px solid #000000', 
                         width:'85%', height:'400px'
                     }}
                 >
                     
                     <input 
-                        // style={{ display: 'none', width: '400px', border: '1px solid #000000' }} 
+                        
+                        className={displayTitulo} 
                         id="input" 
-                        onChange={handleTitulo} 
+                        onChange={e=>setTitulo(e.target.value)} 
                         value={titulo} 
                         placeholder='Digite seu Titulo aqui'
                     />
                     
-                    <textarea 
-                        style={{ display: 'none', width: '400px', height: '200px', border: '1px solid #000000'}}  
+                    <textarea
+                         className={displayText}
+                        style={{  width:'400px', height: '200px', border: '1px solid #000000'}}  
                         id="textarea" 
                         value={text}
                         onChange={e=>setText(e.target.value)}
@@ -76,11 +74,12 @@ export  const BaseCadastro = () => {
                     </textarea>
 
                     <img
+                        className={displayImg}
                         style={{
                             width: "400px",
                             height: "100px",
-                            display: 'none'
                         }}
+                        
                         id="img"
                         src="https://images.google.com.br/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" />
 
